@@ -17,7 +17,7 @@ environment_file_directory="res://AmbientCG/Environments"
 [application]
 
 config/name="game-jam-55"
-run/main_scene="uid://b3lq4srperwqd"
+run/main_scene="uid://cjgeldnx4mjto"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -40,10 +40,10 @@ common/physics_interpolation=true
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
-environment/defaults/default_environment="uid://ycxtlw1ckqyf"
 
 [shader_globals]
 

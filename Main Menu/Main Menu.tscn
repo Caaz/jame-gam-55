@@ -1,0 +1,191 @@
+[gd_scene load_steps=17 format=3 uid="uid://cjgeldnx4mjto"]
+
+[ext_resource type="Script" uid="uid://41ck1w1wbom" path="res://Main Menu/main_menu.gd" id="1_5ms5j"]
+[ext_resource type="Texture2D" uid="uid://8whrnklra26o" path="res://Main Menu/Menu.png" id="2_i0jnm"]
+[ext_resource type="Texture2D" uid="uid://dfk2sklnoi6md" path="res://2D Assets/NinePatchUp.png" id="3_i0jnm"]
+[ext_resource type="Texture2D" uid="uid://514quwxayc6b" path="res://2D Assets/Settings Glyph.png" id="4_4wqtw"]
+[ext_resource type="Texture2D" uid="uid://cew3ykycko1o4" path="res://2D Assets/Start Glyph.png" id="5_xm72b"]
+[ext_resource type="Texture2D" uid="uid://dbiwq8a2bmjoa" path="res://2D Assets/Exit Glyph.png" id="6_62v7d"]
+[ext_resource type="Texture2D" uid="uid://cn7td0sh764jd" path="res://2D Assets/NinePatchDown.png" id="7_xm72b"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wlfof"]
+texture = ExtResource("3_i0jnm")
+texture_margin_left = 12.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_62v7d"]
+texture = ExtResource("7_xm72b")
+texture_margin_left = 12.0
+texture_margin_top = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hx6c7"]
+texture = ExtResource("3_i0jnm")
+texture_margin_left = 8.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xm72b"]
+texture = ExtResource("7_xm72b")
+texture_margin_left = 8.0
+texture_margin_top = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wpo0r"]
+texture = ExtResource("3_i0jnm")
+texture_margin_left = 7.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_re3ss"]
+texture = ExtResource("7_xm72b")
+texture_margin_left = 7.0
+texture_margin_top = 1.0
+
+[sub_resource type="Animation" id="Animation_xm72b"]
+resource_name = "Loading"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.053321064, 1.1920929e-07, 0.35305244, 1), Color(0.012169078, 6.617978e-08, 0.15978763, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -659), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_62v7d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.053321064, 1.1920929e-07, 0.35305244, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -659)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hx6c7"]
+_data = {
+&"Loading": SubResource("Animation_xm72b"),
+&"RESET": SubResource("Animation_62v7d")
+}
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5ms5j")
+
+[node name="ColorRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1150.2
+offset_bottom = 648.0
+texture = ExtResource("2_i0jnm")
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 970.0
+offset_top = 456.0
+offset_right = 1002.0
+offset_bottom = 488.0
+scale = Vector2(5.4, 5.4)
+theme_override_constants/icon_max_width = 11
+theme_override_icons/icon = ExtResource("5_xm72b")
+theme_override_styles/normal = SubResource("StyleBoxTexture_wlfof")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_62v7d")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wlfof")
+
+[node name="Options" type="Button" parent="."]
+layout_mode = 0
+offset_left = 770.0
+offset_top = 456.0
+offset_right = 802.0
+offset_bottom = 488.0
+scale = Vector2(5.4, 5.4)
+theme_override_icons/icon = ExtResource("4_4wqtw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_hx6c7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xm72b")
+theme_override_styles/hover = SubResource("StyleBoxTexture_hx6c7")
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 570.0
+offset_top = 456.0
+offset_right = 602.0
+offset_bottom = 488.0
+scale = Vector2(5.4, 5.4)
+theme_override_icons/icon = ExtResource("6_62v7d")
+theme_override_styles/normal = SubResource("StyleBoxTexture_wpo0r")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_re3ss")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wpo0r")
+
+[node name="CutScenes" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hx6c7")
+}
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = -659.0
+offset_right = 1156.0
+offset_bottom = -4.0
+color = Color(0.053321064, 1.1920929e-07, 0.35305244, 1)
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
