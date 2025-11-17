@@ -1,0 +1,94 @@
+[gd_resource type="ShaderMaterial" load_steps=13 format=3 uid="uid://ds4mil8slxwuc"]
+
+[ext_resource type="Shader" uid="uid://bhoagpmu7tm0u" path="res://shaders/water.gdshader" id="1_j3urw"]
+
+[sub_resource type="Gradient" id="Gradient_rse20"]
+offsets = PackedFloat32Array(0.3, 1)
+colors = PackedColorArray(0.50534403, 0.5053441, 0.50534385, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_s5bwe"]
+frequency = 0.0015
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ihqx2"]
+width = 1024
+height = 1024
+noise = SubResource("FastNoiseLite_s5bwe")
+color_ramp = SubResource("Gradient_rse20")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_l7hvs"]
+frequency = 0.0033
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7cfdx"]
+noise = SubResource("FastNoiseLite_l7hvs")
+seamless = true
+as_normal_map = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1j73f"]
+frequency = 0.016
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_e6bsl"]
+noise = SubResource("FastNoiseLite_1j73f")
+seamless = true
+as_normal_map = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_p0jio"]
+noise_type = 2
+frequency = 0.0077
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6u2jf"]
+noise = SubResource("FastNoiseLite_p0jio")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_j3urw"]
+frequency = 0.1443
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0b106"]
+noise = SubResource("FastNoiseLite_j3urw")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_j3urw")
+shader_parameter/wave_speed = 0.05
+shader_parameter/edge_fade_power = 3.04
+shader_parameter/transmittence = 0.04
+shader_parameter/h_dist_trans_weight = 9.85
+shader_parameter/transmit_color = Color(0.10569719, 0.48599398, 0.64353323, 1)
+shader_parameter/depth_fade_distance = 0.0
+shader_parameter/surface_albedo = Color(0.5913, 0.61441666, 0.73, 1)
+shader_parameter/surface_bottom = Color(0.5343843, 0.63598007, 0.6492162, 1)
+shader_parameter/opacity = 4.99999988824
+shader_parameter/opacity_floor = 0.975
+shader_parameter/opacity_ceiling = 0.8
+shader_parameter/pixelate = false
+shader_parameter/roughness = 0.4
+shader_parameter/height_scale = 1.0
+shader_parameter/amplitude1 = 1.0
+shader_parameter/amplitude2 = 0.5
+shader_parameter/vertex_noise_big = SubResource("NoiseTexture2D_6u2jf")
+shader_parameter/vertex_noise_big2 = SubResource("NoiseTexture2D_0b106")
+shader_parameter/v_noise_tile = 200
+shader_parameter/normal_noise = SubResource("NoiseTexture2D_7cfdx")
+shader_parameter/normal_noise2 = SubResource("NoiseTexture2D_e6bsl")
+shader_parameter/normal_noise_size = 2.0
+shader_parameter/normal_noise_speed = 0.02
+shader_parameter/v_normal_scale = 0.095
+shader_parameter/normal_map_w = 256
+shader_parameter/sky_color = Color(0.2627451, 0.29803923, 0.34509805, 1)
+shader_parameter/high_color = Color(0.4565, 0.5141583, 0.55, 1)
+shader_parameter/low_color = Color(0.13499999, 0.23083332, 0.25, 1)
+shader_parameter/wave_color_range = 2.0
+shader_parameter/foamTexture = SubResource("NoiseTexture2D_ihqx2")
+shader_parameter/foamScale = 13.0
+shader_parameter/foamScrollSpeed = 0.10000000149012
+shader_parameter/foamEdgeBias = 1.0
+shader_parameter/foamFallOffDistance = 1.0
+shader_parameter/foamEdgeDistance = 1.0
+shader_parameter/shine_strength = 0.0450000021375
+shader_parameter/shine_shininess = 18.0
+shader_parameter/shadow = 0.3230000153425
+shader_parameter/shadow_width = 0.18
+shader_parameter/shadow_color = Color(0.705, 0.705, 0.705, 0.705)
+shader_parameter/_specular_smoothness = 0.199
+shader_parameter/_specular_strength = 0.075
+shader_parameter/_glossiness = 0.067

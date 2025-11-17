@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcdhofcjao8v8"]
+
+[ext_resource type="PackedScene" uid="uid://ce3y8qsfrc3a5" path="res://models/osprey/osprey.blend" id="1_hvfl5"]
+[ext_resource type="Script" uid="uid://b012gqsaoc3o4" path="res://scenes/osprey/osprey.gd" id="2_govw7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hvfl5"]
+radius = 0.18310547
+height = 1.0819092
+
+[node name="osprey" instance=ExtResource("1_hvfl5")]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource("2_govw7")
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/position = Vector3(1.950311e-09, 0.044528183, -0.4473516)
+bones/0/rotation = Quaternion(0.6648282, -3.672079e-07, -4.1259213e-07, 0.7469963)
+bones/1/rotation = Quaternion(0.03794988, -2.8192957e-07, -5.2628973e-08, 0.99927974)
+bones/2/rotation = Quaternion(0.21197502, 2.8066449e-12, -3.5377207e-07, 0.9772752)
+bones/3/rotation = Quaternion(0.2964597, -0.35447064, -0.62606305, 0.62809813)
+bones/4/rotation = Quaternion(0.21484745, 0.0077845342, -0.16674271, 0.962277)
+bones/5/rotation = Quaternion(0.3382968, 0.13699126, -0.21612087, 0.905583)
+bones/6/rotation = Quaternion(0.29646066, 0.35447165, 0.62606263, 0.62809765)
+bones/7/rotation = Quaternion(0.21484745, -0.007784519, 0.16674273, 0.9622769)
+bones/8/rotation = Quaternion(0.33829692, -0.13699134, 0.21612082, 0.9055829)
+bones/9/rotation = Quaternion(0.9207471, 0.011593976, -0.027029477, 0.38904983)
+bones/10/rotation = Quaternion(0.60602444, -0.008116451, -0.02297105, 0.79507285)
+bones/11/rotation = Quaternion(-0.5444221, -0.01223521, 0.042043548, 0.8376677)
+bones/12/rotation = Quaternion(0.033242825, 0.018664133, 0.0033038808, 0.99926764)
+bones/13/rotation = Quaternion(0.6402531, -0.072414264, -0.065391384, 0.7619423)
+bones/14/rotation = Quaternion(0.9207472, -0.011593637, 0.02702852, 0.3890498)
+bones/15/rotation = Quaternion(0.60602444, 0.008116442, 0.022971066, 0.79507285)
+bones/16/rotation = Quaternion(-0.54442227, 0.012235241, -0.04204357, 0.8376677)
+bones/17/rotation = Quaternion(0.033242792, -0.018664112, -0.003303863, 0.9992676)
+bones/18/rotation = Quaternion(0.6402531, 0.07241428, 0.06539138, 0.7619424)
+bones/19/position = Vector3(0.05061911, -0.057720646, -0.23083048)
+bones/19/rotation = Quaternion(0.9989138, -1.8672386e-16, -0.04659608, -2.983473e-08)
+bones/20/position = Vector3(-0.05061911, -0.057720646, -0.23083048)
+bones/20/rotation = Quaternion(0.9989138, 1.8672386e-16, 0.04659608, -2.983473e-08)
+
+[node name="Cube" parent="Armature/Skeleton3D" index="0"]
+gi_mode = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -3.700421e-09, -0.06171)
+shape = SubResource("CapsuleShape3D_hvfl5")

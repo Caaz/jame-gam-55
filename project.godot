@@ -1,0 +1,61 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[ambientcg]
+
+extract_path="res://AmbientCG/Downloads"
+material_file_directory="res://AmbientCG/Materials"
+environment_file_directory="res://AmbientCG/Environments"
+
+[application]
+
+config/name="game-jam-55"
+run/main_scene="uid://b3lq4srperwqd"
+config/features=PackedStringArray("4.5", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_height"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/ambientcg/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
+
+[physics]
+
+common/physics_interpolation=true
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
+environment/defaults/default_environment="uid://ycxtlw1ckqyf"
+
+[shader_globals]
+
+WindDirection={
+"type": "vec3",
+"value": Vector3(1, 0.5, 0)
+}
+GaleStrength={
+"type": "float",
+"value": 0.5
+}
+OceanWavesGradient={
+"type": "sampler2D",
+"value": ""
+}
