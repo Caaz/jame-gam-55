@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://fjjwvgv5mvjc"]
+
+[ext_resource type="Texture2D" uid="uid://b8edevgou1dkt" path="res://models/osprey/textures/Ucupaint Cube Color.png" id="1_08oo8"]
+
+[resource]
+albedo_texture = ExtResource("1_08oo8")

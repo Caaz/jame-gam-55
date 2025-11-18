@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://d36lyvcnjj0dk"]
+
+[ext_resource type="Shader" uid="uid://b34yqahhgojnp" path="res://shaders/leaves.gdshader" id="1_wny27"]
+[ext_resource type="Texture2D" uid="uid://cmdskr4qbfpdb" path="res://models/tileset/textures/T_Canopy_01.png" id="2_18blb"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_wny27")
+shader_parameter/canopy_mask = ExtResource("2_18blb")
+shader_parameter/color = Color(0.2079, 0.33, 0.24452999, 1)
