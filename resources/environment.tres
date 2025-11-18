@@ -1,6 +1,6 @@
 [gd_resource type="Environment" load_steps=4 format=3 uid="uid://ycxtlw1ckqyf"]
 
-[ext_resource type="Texture2D" uid="uid://cm4rd5sf8etxe" path="res://AmbientCG/Environments/ambient_cg_NightSkyHDRI0094K_download/NightSkyHDRI009_4K_TONEMAPPED.jpg" id="1_f7h4m"]
+[ext_resource type="Texture2D" uid="uid://cm4rd5sf8etxe" path="res://textures/skybox/NightSkyHDRI009_4K_TONEMAPPED.jpg" id="1_f7h4m"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_rse20"]
 panorama = ExtResource("1_f7h4m")

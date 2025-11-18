@@ -1,0 +1,13 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://ds78n1075eexw"]
+
+[ext_resource type="Texture2D" uid="uid://cn7td0sh764jd" path="res://textures/ninepatch/button_down.png" id="1_vindu"]
+
+[resource]
+content_margin_left = 12.0
+content_margin_right = 12.0
+texture = ExtResource("1_vindu")
+texture_margin_left = 4.0
+texture_margin_top = 8.0
+texture_margin_right = 4.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(0, 0, 32, 32)
