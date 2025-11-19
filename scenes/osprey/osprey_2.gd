@@ -28,11 +28,11 @@ func _physics_process(delta: float) -> void:
 	input_dir.y += .2
 	target_angle.x = move_toward(target_angle.x, input_dir.x, delta * ROLL_SPEED * (abs(input_dir.x - target_angle.x)))
 	target_angle.y = move_toward(target_angle.y, input_dir.y, delta * PITCH_SPEED * (abs(input_dir.y - target_angle.y))) 
-	var roll:float = target_angle.x * -PI/2.5
+	var roll:float = target_angle.x * -PI/2
 	var pitch:float = target_angle.y * PI/2.5
 	animation_tree.set("parameters/glide/blend_position", -target_angle.y)
 	
-	model.transform.basis = basis.rotated(Vector3.FORWARD, roll) * basis.rotated(Vector3.RIGHT, pitch - abs(roll))
+	model.transform.basis = basis.rotated(Vector3.FORWARD, roll) * basis.rotated(Vector3.RIGHT, pitch - abs(roll)*.2)
 	velocity += model.basis.z * FLIGHT_SPEED * delta
 	#velocity += model.basis.y * GLIDE_STRENGTH * delta
 	velocity = velocity.move_toward(velocity * model.basis.y * 0, delta * GLIDE_STRENGTH * abs(velocity * model.basis.y).z/TOP_SPEED)
