@@ -123,15 +123,18 @@ size_flags_vertical = 8
 
 [node name="Start" type="Button" parent="AspectRatioContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_constants/icon_max_width = 11
 icon = ExtResource("3_5seab")
 
 [node name="Options" type="Button" parent="AspectRatioContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 icon = ExtResource("4_4xg86")
 
 [node name="Quit" type="Button" parent="AspectRatioContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 icon = ExtResource("5_thkx5")
 
 [node name="CutScenes" type="AnimationPlayer" parent="."]
