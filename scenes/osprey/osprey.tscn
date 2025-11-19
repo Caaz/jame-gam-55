@@ -21,7 +21,7 @@ animation = &"glide"
 blend_point_0/node = SubResource("AnimationNodeAnimation_d7qgj")
 blend_point_0/pos = -1.0
 blend_point_1/node = SubResource("AnimationNodeAnimation_pma76")
-blend_point_1/pos = -0.2
+blend_point_1/pos = -0.7
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r154t"]
 switch_mode = 2
@@ -55,4 +55,4 @@ shape = SubResource("CapsuleShape3D_hvfl5")
 [node name="AnimationTree" type="AnimationTree" parent="." index="3"]
 tree_root = SubResource("AnimationNodeStateMachine_t4ft4")
 anim_player = NodePath("../AnimationPlayer")
-parameters/glide/blend_position = 0.8842975
+parameters/glide/blend_position = -0.4410218
