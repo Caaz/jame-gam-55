@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcdhofcjao8v8"]
+[gd_scene load_steps=12 format=3 uid="uid://bcdhofcjao8v8"]
 
 [ext_resource type="PackedScene" uid="uid://ce3y8qsfrc3a5" path="res://models/osprey/osprey.blend" id="1_hvfl5"]
 [ext_resource type="Script" uid="uid://cp632qvqjcw3d" path="res://scenes/osprey/osprey_2.gd" id="2_d7qgj"]
@@ -7,6 +7,35 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hvfl5"]
 radius = 0.18310547
 height = 1.0819092
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0wg06"]
+animation = &"flap"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d7qgj"]
+animation = &"dive"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pma76"]
+animation = &"glide"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_0rfo8"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_d7qgj")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_pma76")
+blend_point_1/pos = -0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r154t"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_013jp"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_t4ft4"]
+states/flap/node = SubResource("AnimationNodeAnimation_0wg06")
+states/flap/position = Vector2(452, 152)
+states/glide/node = SubResource("AnimationNodeBlendSpace1D_0rfo8")
+states/glide/position = Vector2(414, 35)
+transitions = ["flap", "glide", SubResource("AnimationNodeStateMachineTransition_r154t"), "Start", "glide", SubResource("AnimationNodeStateMachineTransition_013jp")]
 
 [node name="osprey" instance=ExtResource("1_hvfl5")]
 collision_layer = 2
@@ -22,3 +51,8 @@ surface_material_override/0 = ExtResource("3_d7qgj")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -3.700421e-09, -0.06171)
 shape = SubResource("CapsuleShape3D_hvfl5")
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="3"]
+tree_root = SubResource("AnimationNodeStateMachine_t4ft4")
+anim_player = NodePath("../AnimationPlayer")
+parameters/glide/blend_position = 0.8842975
