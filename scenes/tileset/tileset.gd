@@ -6,13 +6,13 @@ const hitbox_as_is:Array[StringName] = [
 	"Water",
 	"Mount",
 	"Pillar",
-	"TallPillar"
+	"TallPillar",
+	"TreeTrunks"
 ]
 func _remove_hitbox_meshes() -> void:
-	for child:Node in get_children():
-		for mesh:MeshInstance3D in child.get_children():
-			if mesh.name.contains("Hitbox"):
-				mesh.queue_free()
+	for mesh:MeshInstance3D in get_children():
+		if mesh.name.contains("Hitbox"):
+			mesh.queue_free()
 
 func _create_hitboxes() -> void:
 	for mesh:MeshInstance3D in get_children():

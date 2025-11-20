@@ -39,14 +39,33 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "materials": {
+"@MATERIAL:6": {
+"use_external/enabled": true,
+"use_external/path": "res://resources/materials/bark_001/Bark001_1K-JPG.tres"
+},
+"M_Bark_01": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://resources/materials/bark_001/Bark001_1K-JPG.tres",
+"use_external/path": "res://resources/materials/bark_001/Bark001_1K-JPG.tres"
+},
+"M_Bark_01.002": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://resources/materials/bark_001/Bark001_1K-JPG.tres",
+"use_external/path": "res://resources/materials/bark_001/Bark001_1K-JPG.tres"
+},
 "M_Leaf_01.004": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://resources/materials/leaves.tres",
+"use_external/path": "uid://d36lyvcnjj0dk"
+},
+"M_PineLeaf_01": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://resources/materials/leaves.tres",
 "use_external/path": "uid://d36lyvcnjj0dk"
 },
 "Rock": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://resources/materials/rock/Rock062.material",
+"use_external/fallback_path": "res://resources/materials/rock_062/Rock062.material",
 "use_external/path": "uid://btv7tsysava7o"
 },
 "Water": {
