@@ -46,12 +46,12 @@ _subresources={
 "M_Bark_01": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://resources/materials/bark_001/Bark001_1K-JPG.tres",
-"use_external/path": "res://resources/materials/bark_001/Bark001_1K-JPG.tres"
+"use_external/path": "uid://bfwtnvautvn4k"
 },
 "M_Bark_01.002": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://resources/materials/bark_001/Bark001_1K-JPG.tres",
-"use_external/path": "res://resources/materials/bark_001/Bark001_1K-JPG.tres"
+"use_external/path": "uid://bfwtnvautvn4k"
 },
 "M_Leaf_01.004": {
 "use_external/enabled": true,

@@ -21,7 +21,7 @@ const OBSTACLES:Array[String] = [
 	"TallPillar",
 	"TallPillar_001",
 	"TallPillar_002",
-	"TallPillar_003",
+	"TallPillar_003",		
 	"TallPillar_004",
 ]
 const LEVEL_LENGTH:int = 5
@@ -37,7 +37,7 @@ const LEVEL_X:int = -1
 @export_tool_button("clear_grid") var _clear_grid = clear
 
 var filled_cells:Array[int]
-
+var minimum_obstacles:int = 6
 func _ready() -> void:
 	clear()
 	_update_cells()
@@ -66,7 +66,7 @@ func populate(z:int):
 		cell_position.y += 1
 	
 	## Choose a set of random obstacles, at least 3 of them
-	var obstacle_count:int = randi_range(3,OBSTACLES.size())
+	var obstacle_count:int = randi_range(minimum_obstacles, OBSTACLES.size())
 	var chosen_obstacles:Array[String]
 	while chosen_obstacles.size() < obstacle_count:
 		var obstacle_name:String = OBSTACLES.pick_random()

@@ -4,7 +4,7 @@
 const hitbox_as_is:Array[StringName] = [
 	"Gorge",
 	"Water",
-	"Mount",
+	"Mound",
 	"Pillar",
 	"TallPillar",
 	"TreeTrunks"
