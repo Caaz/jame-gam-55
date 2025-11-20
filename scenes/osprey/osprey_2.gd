@@ -39,7 +39,7 @@ func _physics_process(delta: float) -> void:
 	var forward_speed:float = (velocity * model.basis.z).z
 	var speed_percentage:float = (forward_speed / TOP_SPEED)
 	if speed_percentage > 0:
-		velocity = velocity.move_toward(model.basis.z * velocity.length(), abs(velocity.dot(model.basis.y)) * delta * 2.5 * (speed_percentage + .4))
+		velocity = velocity.move_toward(model.basis.z * velocity.length(), abs(velocity.dot(model.basis.y)) * delta * 2.5 * (speed_percentage))
 	
 	if velocity.length() > TOP_SPEED:
 		velocity = velocity.normalized() * TOP_SPEED

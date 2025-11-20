@@ -37,7 +37,25 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"materials": {
+"M_Leaf_01.004": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://resources/materials/leaves.tres",
+"use_external/path": "uid://d36lyvcnjj0dk"
+},
+"Rock": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://resources/materials/rock/Rock062.material",
+"use_external/path": "uid://btv7tsysava7o"
+},
+"Water": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://resources/materials/water.tres",
+"use_external/path": "uid://ds4mil8slxwuc"
+}
+}
+}
 blender/nodes/visible=2
 blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true
