@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="1_iq20y"]
 [ext_resource type="Script" uid="uid://dnovphntdavx2" path="res://scenes/testbed/testbed.gd" id="1_s5bwe"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="2_s3sv4"]
-[ext_resource type="Environment" uid="uid://ycxtlw1ckqyf" path="res://resources/environment.tres" id="3_s5bwe"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_unict"]
 [ext_resource type="Script" uid="uid://cuffvge5ad4aa" path="res://addons/phantom_camera/scripts/resources/phantom_camera_noise_3d.gd" id="4_1j73f"]
+[ext_resource type="Environment" uid="uid://ycxtlw1ckqyf" path="res://resources/environment.tres" id="4_l7hvs"]
 [ext_resource type="PackedScene" uid="uid://bcdhofcjao8v8" path="res://scenes/osprey/osprey.tscn" id="4_s3sv4"]
 [ext_resource type="Texture2D" uid="uid://cm4rd5sf8etxe" path="res://textures/skybox/NightSkyHDRI009_4K_TONEMAPPED.jpg" id="7_jepp6"]
 [ext_resource type="MeshLibrary" uid="uid://4r4psddilayh" path="res://resources/tileset.tres" id="9_s5bwe"]
@@ -64,6 +64,9 @@ volumetric_fog_density = 0.1457
 volumetric_fog_emission = Color(0.65012825, 0.6501283, 0.65012825, 1)
 volumetric_fog_emission_energy = 3.9
 volumetric_fog_detail_spread = 1.0245303
+adjustment_brightness = 0.75
+adjustment_contrast = 1.08
+adjustment_saturation = 1.45
 
 [node name="Testbed" type="Node3D"]
 script = ExtResource("1_s5bwe")
@@ -76,7 +79,7 @@ follow_mode = 5
 follow_target = NodePath("../osprey")
 tween_resource = SubResource("Resource_mdb0y")
 tween_on_load = false
-environment = ExtResource("3_s5bwe")
+environment = ExtResource("4_l7hvs")
 follow_offset = Vector3(0, 1, 0)
 follow_damping = true
 follow_damping_value = Vector3(0.05, 0.05, 0.05)
@@ -89,7 +92,7 @@ metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 physics_interpolation_mode = 1
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.12973467, 6.0997133, 516.25854)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.005201406, 6.028813, 516.37006)
 environment = SubResource("Environment_l7hvs")
 fov = 37.849285
 
@@ -105,7 +108,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.008, 526.36)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.9291326, 0.3697467, 0, 0.31956276, 0.8030259, 0.50302005, 0.18598996, 0.4673722, -0.864275, 0, 0, 0)
 shadow_enabled = true
-shadow_opacity = 0.3
+shadow_opacity = 0.75
 directional_shadow_mode = 0
 directional_shadow_fade_start = 0.5
 directional_shadow_max_distance = 400.0
@@ -113,10 +116,10 @@ directional_shadow_max_distance = 400.0
 [node name="LevelBuilder" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, -3, 0)
 mesh_library = ExtResource("9_s5bwe")
-cell_size = Vector3(500, 0.01, 500)
+cell_size = Vector3(500, 0.01, 250)
 cell_center_y = false
 data = {
-"cells": PackedInt32Array(0, 4, 1, 65536, 4, 15, 131072, 4, 21, 196608, 4, 14, 0, 3, 1, 65536, 3, 15, 131072, 3, 21, 196608, 3, 14, 0, 2, 1, 65536, 2, 15, 131072, 2, 21, 196608, 2, 14, 0, 1, 1, 65536, 1, 15, 131072, 1, 21, 196608, 1, 14, 0, 0, 1, 65536, 0, 15, 131072, 0, 21, 196608, 0, 14, 65535, 1, 1, 131071, 1, 15, 196607, 1, 21, 262143, 1, 14, 65535, 2, 1, 131071, 2, 15, 196607, 2, 21, 262143, 2, 14, 65535, 3, 1, 131071, 3, 15, 196607, 3, 21, 262143, 3, 14, 65535, 4, 1, 131071, 4, 15, 196607, 4, 21, 262143, 4, 14, 65535, 0, 1, 131071, 0, 15, 196607, 0, 21, 262143, 0, 14)
+"cells": PackedInt32Array(65535, 0, 1, 131071, 0, 15, 196607, 0, 27, 262143, 0, 14, 327679, 0, 17, 393215, 0, 25, 458751, 0, 8, 524287, 0, 5, 589823, 0, 12, 655359, 0, 4, 65535, 1, 1, 131071, 1, 15, 196607, 1, 27, 262143, 1, 14, 327679, 1, 9, 393215, 1, 4, 458751, 1, 2, 524287, 1, 11, 589823, 1, 6, 655359, 1, 23, 720895, 1, 5, 786431, 1, 7, 851967, 1, 12, 917503, 1, 21, 983039, 1, 10, 1048575, 1, 25, 1114111, 1, 13, 1179647, 1, 8, 65535, 2, 1, 131071, 2, 15, 196607, 2, 27, 262143, 2, 14, 327679, 2, 19, 393215, 2, 4, 458751, 2, 3, 524287, 2, 6, 589823, 2, 21, 655359, 2, 12, 720895, 2, 9, 786431, 2, 8, 851967, 2, 25, 917503, 2, 17, 983039, 2, 5, 1048575, 2, 23, 1114111, 2, 11, 1179647, 2, 10, 1245183, 2, 13, 1310719, 2, 7, 65535, 3, 1, 131071, 3, 15, 196607, 3, 27, 262143, 3, 14, 327679, 3, 3, 393215, 3, 5, 458751, 3, 8, 524287, 3, 13, 589823, 3, 2, 655359, 3, 12, 720895, 3, 17, 786431, 3, 23, 851967, 3, 10, 65535, 4, 1, 131071, 4, 15, 196607, 4, 27, 262143, 4, 14, 327679, 4, 7, 393215, 4, 8, 458751, 4, 3, 524287, 4, 23, 589823, 4, 12, 655359, 4, 25, 720895, 4, 13, 786431, 4, 10)
 }
 script = ExtResource("10_l7hvs")
 metadata/_editor_floor_ = Vector3(0, 1, 0)

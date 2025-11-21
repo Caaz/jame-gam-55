@@ -40,3 +40,6 @@ volumetric_fog_density = 0.1457
 volumetric_fog_emission = Color(0.65012825, 0.6501283, 0.65012825, 1)
 volumetric_fog_emission_energy = 3.9
 volumetric_fog_detail_spread = 1.0245303
+adjustment_brightness = 0.75
+adjustment_contrast = 1.08
+adjustment_saturation = 1.45

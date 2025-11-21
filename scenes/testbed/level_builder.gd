@@ -23,6 +23,8 @@ const OBSTACLES:Array[String] = [
 	"TallPillar_002",
 	"TallPillar_003",		
 	"TallPillar_004",
+	"Log",
+	"Log_001"
 ]
 const LEVEL_LENGTH:int = 5
 const LEVEL_X:int = -1

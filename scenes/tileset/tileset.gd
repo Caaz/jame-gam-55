@@ -7,7 +7,8 @@ const hitbox_as_is:Array[StringName] = [
 	"Mound",
 	"Pillar",
 	"TallPillar",
-	"TreeTrunks"
+	"TreeTrunks",
+	"Log",
 ]
 func _remove_hitbox_meshes() -> void:
 	for mesh:MeshInstance3D in get_children():
