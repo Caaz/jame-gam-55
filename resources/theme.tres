@@ -1,13 +1,45 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://lgg2fcmjt0jt"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://lgg2fcmjt0jt"]
 
 [ext_resource type="StyleBox" uid="uid://cv8c0mw1sftbm" path="res://resources/style_boxes/button.tres" id="1_7ct1h"]
 [ext_resource type="StyleBox" uid="uid://ds78n1075eexw" path="res://resources/style_boxes/button_pressed.tres" id="2_886mr"]
+[ext_resource type="FontFile" uid="uid://bgaih21w3i86s" path="res://fonts/Aardvark Sk8.otf" id="3_886mr"]
+[ext_resource type="Texture2D" uid="uid://duixm142godcg" path="res://addons/kenney_input_prompts/Generic/Default/generic_button_circle_fill.png" id="3_owntx"]
+[ext_resource type="Texture2D" uid="uid://k682fqqe82id" path="res://addons/kenney_input_prompts/Generic/Default/generic_button_circle_outline.png" id="4_aaf3v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_886mr"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b751m"]
+draw_center = false
+
+[sub_resource type="Gradient" id="Gradient_886mr"]
+offsets = PackedFloat32Array(0, 0.2, 0.5, 0.8, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.39215687, 0, 0, 0, 0.39215687, 0, 0, 0, 0.39215687, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b751m"]
+gradient = SubResource("Gradient_886mr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_owntx"]
+texture = SubResource("GradientTexture1D_b751m")
 
 [resource]
 Button/styles/hover = ExtResource("1_7ct1h")
 Button/styles/normal = ExtResource("1_7ct1h")
 Button/styles/pressed = ExtResource("2_886mr")
-MarginContainer/constants/margin_bottom = 24
-MarginContainer/constants/margin_left = 24
-MarginContainer/constants/margin_right = 24
-MarginContainer/constants/margin_top = 24
+CheckBox/constants/icon_max_width = 50
+CheckBox/icons/checked = ExtResource("3_owntx")
+CheckBox/icons/unchecked = ExtResource("4_aaf3v")
+CheckBox/styles/normal = SubResource("StyleBoxFlat_886mr")
+CheckBox/styles/pressed = SubResource("StyleBoxFlat_b751m")
+Label/colors/font_color = Color(0.018009486, 0.09990943, 0.1328328, 1)
+Label/colors/font_outline_color = Color(0.4351091, 0.58306915, 0.6813922, 1)
+Label/constants/outline_size = 6
+Label/font_sizes/font_size = 48
+MarginContainer/constants/margin_bottom = 12
+MarginContainer/constants/margin_left = 12
+MarginContainer/constants/margin_right = 12
+MarginContainer/constants/margin_top = 12
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_owntx")
+RichTextLabel/font_sizes/normal_font_size = 30
+RichTextLabel/fonts/normal_font = ExtResource("3_886mr")
+VBoxContainer/constants/separation = 0

@@ -1,5 +1,9 @@
 class_name Player extends CharacterBody3D
 signal crashed()
+signal flapped()
+signal pitched()
+signal rolled()
+
 const FLAP_STRENGTH:float = 1000
 const ROLL_SPEED:float = 3
 const PITCH_SPEED:float = 4
@@ -14,6 +18,7 @@ var target_angle:Vector2
 @onready var animation_player:AnimationPlayer = find_child("AnimationPlayer")
 @onready var animation_tree:AnimationTree = find_child("AnimationTree")
 @onready var state_machine:AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
+@onready var trail:TrailEmitter = find_child("TrailEmitter")
 var speed_percentage:float:
 	get:
 		var forward_speed:float = (velocity * model.basis.z).z
@@ -23,18 +28,27 @@ var can_flap:bool:
 	get:
 		return state_machine.get_current_node() != &"flap"
 
+func _ready() -> void:
+	trail.update_interval = 0.01
+
 func _physics_process(delta: float) -> void: 
 	velocity += get_gravity() * delta * GRAVITY_STRENGTH
 	if Input.is_action_just_pressed("flap") and can_flap:
 		state_machine.travel("flap")
+		flapped.emit()
 		await create_tween().tween_interval(.4).finished
 		velocity += model.basis.y * FLAP_STRENGTH * delta
 		velocity += model.basis.z * FLAP_STRENGTH * delta
 		return
 	
 	var input_dir := Input.get_vector("roll_left", "roll_right",  "pitch_up", "pitch_down")
+	
 	target_angle.x = move_toward(target_angle.x, input_dir.x, delta * ROLL_SPEED * (abs(input_dir.x - target_angle.x)))
 	target_angle.y = move_toward(target_angle.y, input_dir.y, delta * PITCH_SPEED * (abs(input_dir.y - target_angle.y))) 
+	if abs(target_angle.x) > .5:
+		rolled.emit()
+	if abs(target_angle.y) > .5:
+		pitched.emit()
 	var roll:float = target_angle.x * -PI/2
 	var pitch:float = target_angle.y * PI/2
 	animation_tree.set("parameters/glide/blend_position", -target_angle.y)
@@ -50,5 +64,6 @@ func _physics_process(delta: float) -> void:
 	
 	RenderingServer.global_shader_parameter_set("player_position", global_position)
 	var collided:bool = move_and_slide()
+	trail.size = pow(speed_percentage,10) * .1
 	if collided:
 		crashed.emit()

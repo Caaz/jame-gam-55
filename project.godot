@@ -37,6 +37,7 @@ enabled=PackedStringArray("res://addons/ambientcg/plugin.cfg", "res://addons/pha
 [gui]
 
 theme/custom="uid://lgg2fcmjt0jt"
+theme/custom_font="uid://ba5ceghpxx3sx"
 
 [input]
 

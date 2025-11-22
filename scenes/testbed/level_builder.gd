@@ -43,7 +43,7 @@ const LEVEL_X:int = -1
 var filled_cells:Array[int]
 var minimum_obstacles:int:
 	get:
-		return clamp(target_cell - 1, 0, OBSTACLES.size())
+		return clamp(target_cell/2., 0, OBSTACLES.size())
 
 var maximum_obstacles:int:
 	get:
