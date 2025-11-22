@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b3lq4srperwqd"]
+[gd_scene load_steps=25 format=3 uid="uid://b3lq4srperwqd"]
 
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="1_iq20y"]
 [ext_resource type="Script" uid="uid://dnovphntdavx2" path="res://scenes/testbed/testbed.gd" id="1_s5bwe"]
@@ -11,6 +11,9 @@
 [ext_resource type="MeshLibrary" uid="uid://4r4psddilayh" path="res://resources/tileset.tres" id="9_s5bwe"]
 [ext_resource type="AudioStream" uid="uid://ct5wjgvvnprci" path="res://audio/Gorge Path Theme.ogg" id="10_ihqx2"]
 [ext_resource type="Script" uid="uid://cbrsep672y3jn" path="res://scenes/testbed/level_builder.gd" id="10_l7hvs"]
+[ext_resource type="Shader" uid="uid://cloable5fibdk" path="res://shaders/speed_effect.gdshader" id="11_e6bsl"]
+[ext_resource type="Shader" uid="uid://cemq4viuqqwhg" path="res://shaders/bar_shader.gdshader" id="12_1j73f"]
+[ext_resource type="Texture2D" uid="uid://cf3h18wwgvhso" path="res://textures/feather.svg" id="12_7cfdx"]
 
 [sub_resource type="Resource" id="Resource_mdb0y"]
 script = ExtResource("2_s3sv4")
@@ -33,7 +36,7 @@ filter = false
 [sub_resource type="Sky" id="Sky_unict"]
 sky_material = SubResource("PanoramaSkyMaterial_rse20")
 
-[sub_resource type="Environment" id="Environment_l7hvs"]
+[sub_resource type="Environment" id="Environment_e6bsl"]
 background_mode = 2
 background_color = Color(0.7708395, 0.77083945, 0.77083945, 1)
 sky = SubResource("Sky_unict")
@@ -68,11 +71,35 @@ adjustment_brightness = 0.75
 adjustment_contrast = 1.08
 adjustment_saturation = 1.45
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_p0jio"]
+noise_type = 0
+frequency = 0.0573
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6u2jf"]
+noise = SubResource("FastNoiseLite_p0jio")
+seamless_blend_skirt = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6u2jf"]
+shader = ExtResource("11_e6bsl")
+shader_parameter/noise = SubResource("NoiseTexture2D_6u2jf")
+shader_parameter/line_count = 2.0
+shader_parameter/distortion_power = 0.10000000149012
+shader_parameter/line_falloff = 0.0
+shader_parameter/mask_size = 0.14800000703
+shader_parameter/mask_edge = 0.2550000121125
+shader_parameter/animation_speed = 9.7690004165275
+shader_parameter/blur_strength = 0.00999999977648
+shader_parameter/effect_power = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p0jio"]
+shader = ExtResource("12_1j73f")
+shader_parameter/percent = 0.5130000243675
+
 [node name="Testbed" type="Node3D"]
 script = ExtResource("1_s5bwe")
 
 [node name="PhantomCamera3D" type="Node3D" parent="." node_paths=PackedStringArray("follow_target")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8.742278e-07, 6.008, 516.36)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8.742278e-07, 31, -10)
 top_level = true
 script = ExtResource("1_iq20y")
 follow_mode = 5
@@ -92,8 +119,8 @@ metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 physics_interpolation_mode = 1
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.14955534, 6.10145, 516.2922)
-environment = SubResource("Environment_l7hvs")
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.15253457, 31.120592, -10.076788)
+environment = SubResource("Environment_e6bsl")
 fov = 37.849285
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
@@ -103,7 +130,7 @@ script = ExtResource("3_unict")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="osprey" parent="." instance=ExtResource("4_s3sv4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.008, 526.36)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.9291326, 0.3697467, 0, 0.31956276, 0.8030259, 0.50302005, 0.18598996, 0.4673722, -0.864275, 0, 0, 0)
@@ -119,19 +146,54 @@ mesh_library = ExtResource("9_s5bwe")
 cell_size = Vector3(500, 0.01, 250)
 cell_center_y = false
 data = {
-"cells": PackedInt32Array(65535, 0, 1, 131071, 0, 15, 196607, 0, 27, 262143, 0, 14, 327679, 0, 17, 393215, 0, 25, 458751, 0, 8, 524287, 0, 5, 589823, 0, 12, 655359, 0, 4, 65535, 1, 1, 131071, 1, 15, 196607, 1, 27, 262143, 1, 14, 327679, 1, 9, 393215, 1, 4, 458751, 1, 2, 524287, 1, 11, 589823, 1, 6, 655359, 1, 23, 720895, 1, 5, 786431, 1, 7, 851967, 1, 12, 917503, 1, 21, 983039, 1, 10, 1048575, 1, 25, 1114111, 1, 13, 1179647, 1, 8, 65535, 2, 1, 131071, 2, 15, 196607, 2, 27, 262143, 2, 14, 327679, 2, 19, 393215, 2, 4, 458751, 2, 3, 524287, 2, 6, 589823, 2, 21, 655359, 2, 12, 720895, 2, 9, 786431, 2, 8, 851967, 2, 25, 917503, 2, 17, 983039, 2, 5, 1048575, 2, 23, 1114111, 2, 11, 1179647, 2, 10, 1245183, 2, 13, 1310719, 2, 7, 65535, 3, 1, 131071, 3, 15, 196607, 3, 27, 262143, 3, 14, 327679, 3, 3, 393215, 3, 5, 458751, 3, 8, 524287, 3, 13, 589823, 3, 2, 655359, 3, 12, 720895, 3, 17, 786431, 3, 23, 851967, 3, 10, 65535, 4, 1, 131071, 4, 15, 196607, 4, 27, 262143, 4, 14, 327679, 4, 7, 393215, 4, 8, 458751, 4, 3, 524287, 4, 23, 589823, 4, 12, 655359, 4, 25, 720895, 4, 13, 786431, 4, 10)
+"cells": PackedInt32Array(65535, 0, 1, 131071, 0, 15, 196607, 0, 21, 262143, 0, 14, 327679, 0, 26, 65535, 1, 1, 131071, 1, 15, 196607, 1, 21, 262143, 1, 14, 327679, 1, 26, 65535, 2, 1, 131071, 2, 15, 196607, 2, 21, 262143, 2, 14, 327679, 2, 26, 65535, 3, 1, 131071, 3, 15, 196607, 3, 21, 262143, 3, 14, 327679, 3, 26, 65535, 4, 1, 131071, 4, 15, 196607, 4, 21, 262143, 4, 14, 327679, 4, 26)
 }
 script = ExtResource("10_l7hvs")
 metadata/_editor_floor_ = Vector3(0, 1, 0)
 
-[node name="Label" type="Label" parent="."]
-offset_left = 466.0
-offset_top = 24.0
-offset_right = 506.0
-offset_bottom = 47.0
-text = "000"
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SpeedEffect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_6u2jf")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="GorgePathTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_ihqx2")
 autoplay = true
 parameters/looping = true
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer2"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CanvasLayer2/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 1.7778
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer2/UI/AspectRatioContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "000"
+
+[node name="SpeedDisplay" type="TextureRect" parent="CanvasLayer2/UI/AspectRatioContainer"]
+material = SubResource("ShaderMaterial_p0jio")
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("12_7cfdx")

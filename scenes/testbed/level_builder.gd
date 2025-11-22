@@ -47,7 +47,7 @@ var minimum_obstacles:int:
 
 var maximum_obstacles:int:
 	get:
-		return min(OBSTACLES.size(), minimum_obstacles +2)
+		return minimum_obstacles
 func _ready() -> void:
 	clear()
 	_update_cells()
@@ -78,7 +78,7 @@ func populate(z:int):
 		cell_position.y += 1
 	
 	## Choose a set of random obstacles, at least 3 of them
-	var obstacle_count:int = randi_range(minimum_obstacles, maximum_obstacles)
+	var obstacle_count:int = minimum_obstacles
 	var chosen_obstacles:Array[String]
 	while chosen_obstacles.size() < obstacle_count:
 		var obstacle_name:String = OBSTACLES.pick_random()

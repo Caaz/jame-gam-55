@@ -1,11 +1,12 @@
 class_name Player extends CharacterBody3D
+signal crashed()
 const FLAP_STRENGTH:float = 1000
 const ROLL_SPEED:float = 3
 const PITCH_SPEED:float = 4
 const GRAVITY_STRENGTH: float = 1
 const FLIGHT_SPEED:float = 1
 const GLIDE_STRENGTH:float = 15
-const TOP_SPEED:float = 60
+const TOP_SPEED:float = 100
 const LIFT_FACTOR:float = 10
 const DRAG_FACTOR:float = 40
 var target_angle:Vector2
@@ -13,6 +14,10 @@ var target_angle:Vector2
 @onready var animation_player:AnimationPlayer = find_child("AnimationPlayer")
 @onready var animation_tree:AnimationTree = find_child("AnimationTree")
 @onready var state_machine:AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
+var speed_percentage:float:
+	get:
+		var forward_speed:float = (velocity * model.basis.z).z
+		return forward_speed / TOP_SPEED
 
 var can_flap:bool:
 	get:
@@ -36,8 +41,6 @@ func _physics_process(delta: float) -> void:
 	
 	model.transform.basis = basis.rotated(Vector3.FORWARD, roll) * basis.rotated(Vector3.RIGHT, pitch )
 	
-	var forward_speed:float = (velocity * model.basis.z).z
-	var speed_percentage:float = (forward_speed / TOP_SPEED)
 	if speed_percentage > 0:
 		velocity = velocity.move_toward(model.basis.z * velocity.length(), abs(velocity.dot(model.basis.y)) * delta * 2.5 * (speed_percentage))
 	
@@ -45,5 +48,7 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.normalized() * TOP_SPEED
 		
 	
-	move_and_slide()
 	RenderingServer.global_shader_parameter_set("player_position", global_position)
+	var collided:bool = move_and_slide()
+	if collided:
+		crashed.emit()
