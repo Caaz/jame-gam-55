@@ -17,7 +17,7 @@ Vector2i(-1, -1): {
 "fade_beats": 0.2,
 "fade_mode": 3,
 "from_time": 0,
-"to_time": 0
+"to_time": 1
 }
 }
 
@@ -29,3 +29,4 @@ script = ExtResource("1_hyk8p")
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="." groups=["music_player"]]
 stream = SubResource("AudioStreamInteractive_6q06x")
 autoplay = true
+bus = &"Music"

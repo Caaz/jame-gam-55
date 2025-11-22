@@ -36,6 +36,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("flap") and can_flap:
 		state_machine.travel("flap")
 		flapped.emit()
+		$flap.play()
 		await create_tween().tween_interval(.4).finished
 		velocity += model.basis.y * FLAP_STRENGTH * delta
 		velocity += model.basis.z * FLAP_STRENGTH * delta

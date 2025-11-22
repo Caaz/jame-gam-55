@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://bcdhofcjao8v8"]
+[gd_scene load_steps=16 format=3 uid="uid://bcdhofcjao8v8"]
 
 [ext_resource type="PackedScene" uid="uid://ce3y8qsfrc3a5" path="res://models/osprey/osprey.blend" id="1_hvfl5"]
 [ext_resource type="Script" uid="uid://cp632qvqjcw3d" path="res://scenes/osprey/osprey.gd" id="2_d7qgj"]
 [ext_resource type="Material" uid="uid://fjjwvgv5mvjc" path="res://resources/materials/osprey.tres" id="3_d7qgj"]
+[ext_resource type="AudioStream" uid="uid://crbq5q4uhrblf" path="res://audio/(SFX) flap.mp3" id="4_pma76"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d7qgj"]
 cull_mode = 2
@@ -44,6 +45,12 @@ states/glide/node = SubResource("AnimationNodeBlendSpace1D_0rfo8")
 states/glide/position = Vector2(414, 35)
 transitions = ["flap", "glide", SubResource("AnimationNodeStateMachineTransition_r154t"), "Start", "glide", SubResource("AnimationNodeStateMachineTransition_013jp")]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pma76"]
+random_pitch = 1.3
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("4_pma76")
+
 [node name="osprey" instance=ExtResource("1_hvfl5")]
 collision_layer = 2
 axis_lock_angular_x = true
@@ -52,24 +59,24 @@ axis_lock_angular_z = true
 script = ExtResource("2_d7qgj")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/0/position = Vector3(-1.498377e-08, 0.029198645, -0.4473516)
-bones/0/rotation = Quaternion(0.638766, -3.5281286e-07, -4.2496725e-07, 0.7694012)
+bones/0/position = Vector3(-1.2108134e-08, 0.03180181, -0.4473516)
+bones/0/rotation = Quaternion(0.64084727, -3.5396243e-07, -4.2401027e-07, 0.7676685)
 bones/1/rotation = Quaternion(0.06128725, -2.8160247e-07, -8.4993346e-08, 0.99812025)
 bones/2/rotation = Quaternion(0.19193277, 2.8492768e-12, -3.2032287e-07, 0.9814082)
-bones/3/rotation = Quaternion(-0.06745616, 0.012229923, -0.6616316, 0.7466886)
+bones/3/rotation = Quaternion(-0.069480866, 0.020469075, -0.6620365, 0.7459632)
 bones/4/rotation = Quaternion(0.17546259, 0.006459753, -0.15062277, 0.9728741)
-bones/5/rotation = Quaternion(0.073335044, 0.033742357, -0.20227616, 0.97599584)
-bones/6/rotation = Quaternion(-0.06745505, -0.012228671, 0.6616317, 0.74668854)
+bones/5/rotation = Quaternion(0.08187143, 0.03699412, -0.20115659, 0.9754305)
+bones/6/rotation = Quaternion(-0.06947977, -0.020467833, 0.6620366, 0.7459633)
 bones/7/rotation = Quaternion(0.17546257, -0.006459742, 0.15062277, 0.9728741)
-bones/8/rotation = Quaternion(0.0734326, -0.033779524, 0.2022635, 0.9759899)
-bones/9/rotation = Quaternion(0.92768365, 0.011692308, -0.027662821, 0.3721576)
-bones/10/rotation = Quaternion(0.6024746, -0.0077210832, -0.023137147, 0.7977654)
-bones/11/rotation = Quaternion(-0.54114705, -0.012342156, 0.041595742, 0.8398079)
+bones/8/rotation = Quaternion(0.08243983, -0.03721062, 0.20108142, 0.9753899)
+bones/9/rotation = Quaternion(0.9274003, 0.01163871, -0.027611108, 0.37286872)
+bones/10/rotation = Quaternion(0.599447, -0.0078707365, -0.023004532, 0.8000451)
+bones/11/rotation = Quaternion(-0.53863156, -0.012385674, 0.041377883, 0.8414336)
 bones/12/rotation = Quaternion(0.033242766, 0.018664118, 0.0033038799, 0.99926764)
 bones/13/rotation = Quaternion(0.6402531, -0.07241425, -0.065391384, 0.7619423)
-bones/14/rotation = Quaternion(0.92768365, -0.011692, 0.02766185, 0.3721577)
-bones/15/rotation = Quaternion(0.6024747, 0.0077210595, 0.023137167, 0.79776525)
-bones/16/rotation = Quaternion(-0.5411474, 0.012342179, -0.04159577, 0.8398077)
+bones/14/rotation = Quaternion(0.92740065, -0.011638455, 0.027610205, 0.37286776)
+bones/15/rotation = Quaternion(0.5994476, 0.007870708, 0.023004567, 0.80004466)
+bones/16/rotation = Quaternion(-0.5386321, 0.012385685, -0.041377924, 0.84143335)
 bones/17/rotation = Quaternion(0.033242792, -0.018664116, -0.0033038706, 0.9992676)
 bones/18/rotation = Quaternion(0.6402531, 0.07241428, 0.06539138, 0.7619424)
 bones/19/position = Vector3(0.05061911, -0.050205305, -0.23083048)
@@ -97,3 +104,9 @@ shape = SubResource("CapsuleShape3D_hvfl5")
 tree_root = SubResource("AnimationNodeStateMachine_t4ft4")
 anim_player = NodePath("../AnimationPlayer")
 parameters/glide/blend_position = -0.4410218
+
+[node name="flap" type="AudioStreamPlayer" parent="." index="5"]
+stream = SubResource("AudioStreamRandomizer_pma76")
+volume_db = 8.0
+max_polyphony = 2
+bus = &"SFX"

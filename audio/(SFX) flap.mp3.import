@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://crbq5q4uhrblf"
+path="res://.godot/imported/(SFX) flap.mp3-1eda5c646e1133c0d5df40ade3751bec.mp3str"
+
+[deps]
+
+source_file="res://audio/(SFX) flap.mp3"
+dest_files=["res://.godot/imported/(SFX) flap.mp3-1eda5c646e1133c0d5df40ade3751bec.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
