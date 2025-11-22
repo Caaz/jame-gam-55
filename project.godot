@@ -82,15 +82,7 @@ environment/defaults/default_environment="uid://ycxtlw1ckqyf"
 
 [shader_globals]
 
-WindDirection={
+player_position={
 "type": "vec3",
-"value": Vector3(1, 0.5, 0)
-}
-GaleStrength={
-"type": "float",
-"value": 0.5
-}
-OceanWavesGradient={
-"type": "sampler2D",
-"value": ""
+"value": Vector3(0, 0, 0)
 }

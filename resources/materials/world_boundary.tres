@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c0j34qcpkq8tg"]
+
+[ext_resource type="Shader" uid="uid://2ba1gks62jbs" path="res://shaders/world_boundary.gdshader" id="1_i8gy3"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_i8gy3")
+shader_parameter/radius = 100.0
+shader_parameter/albedo = Color(0.62, 0.23766667, 0, 0.4745098)

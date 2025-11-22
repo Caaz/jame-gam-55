@@ -4,6 +4,7 @@ const LEVEL_ITEMS:Array[String] = [
 	"Water",
 	"TreeTrunks",
 	"Leaves",
+	"Border"
 ]
 const OBSTACLES:Array[String] = [
 	"Ivy",
@@ -36,10 +37,17 @@ const LEVEL_X:int = -1
 		target_cell = new
 		_update_cells()
 
+@warning_ignore("unused_private_class_variable")
 @export_tool_button("clear_grid") var _clear_grid = clear
 
 var filled_cells:Array[int]
-var minimum_obstacles:int = 6
+var minimum_obstacles:int:
+	get:
+		return clamp(target_cell - 1, 0, OBSTACLES.size())
+
+var maximum_obstacles:int:
+	get:
+		return min(OBSTACLES.size(), minimum_obstacles +2)
 func _ready() -> void:
 	clear()
 	_update_cells()
@@ -54,7 +62,9 @@ func _update_cells() -> void:
 		
 
 func clear_cell(z:int):
-	filled_cells.remove_at(filled_cells.find(z))
+	var cell:int = filled_cells.find(z)
+	if cell != -1:
+		filled_cells.remove_at(cell)
 	for height:int in range(0, 10):
 		set_cell_item(Vector3(LEVEL_X, height, z), INVALID_CELL_ITEM)
 
@@ -68,7 +78,7 @@ func populate(z:int):
 		cell_position.y += 1
 	
 	## Choose a set of random obstacles, at least 3 of them
-	var obstacle_count:int = randi_range(minimum_obstacles, OBSTACLES.size())
+	var obstacle_count:int = randi_range(minimum_obstacles, maximum_obstacles)
 	var chosen_obstacles:Array[String]
 	while chosen_obstacles.size() < obstacle_count:
 		var obstacle_name:String = OBSTACLES.pick_random()

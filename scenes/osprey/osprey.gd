@@ -46,3 +46,4 @@ func _physics_process(delta: float) -> void:
 		
 	
 	move_and_slide()
+	RenderingServer.global_shader_parameter_set("player_position", global_position)
