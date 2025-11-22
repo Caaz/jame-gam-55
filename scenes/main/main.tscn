@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bto7oxp2k6rie"]
+
+[ext_resource type="Script" uid="uid://dlprwn6a58twe" path="res://scenes/main/main.gd" id="1_hyk8p"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_hyk8p")
+
+[node name="SceneContainer" type="Node" parent="." groups=["scene_container"]]

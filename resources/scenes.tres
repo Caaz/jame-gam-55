@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ResourceGroup" load_steps=2 format=3 uid="uid://dnbe6e26w50mx"]
+
+[ext_resource type="Script" uid="uid://jkkgxnib3yo0" path="res://addons/godot_resource_groups/resource_group.gd" id="1_vcpur"]
+
+[resource]
+script = ExtResource("1_vcpur")
+base_folder = "res://scenes"
+includes = Array[String](["**/*.tscn"])
+paths = Array[String](["res://scenes/gameplay/gameplay.tscn", "res://scenes/gameplay/tutorial/tutorial.tscn", "res://scenes/gameplay/ui/ui.tscn", "res://scenes/game_over/game_over.tscn", "res://scenes/main/main.tscn", "res://scenes/main_menu/main_menu.tscn", "res://scenes/osprey/osprey.tscn", "res://scenes/tileset/tileset.tscn"])
+metadata/_custom_type_script = "uid://jkkgxnib3yo0"

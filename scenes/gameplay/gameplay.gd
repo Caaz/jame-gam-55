@@ -1,5 +1,5 @@
 extends Node3D
-signal game_over(score:float)
+#const GAME_OVER:PackedScene = preload("uid://lbw04rqyodlr")
 @onready var player = $osprey
 @onready var level_builder:LevelBuilder = find_child("LevelBuilder")
 @onready var score_label:Label = find_child("ScoreLabel")
@@ -21,9 +21,12 @@ var gameplay_time:float = 0
 func _ready() -> void:
 	gameplay_time = 0
 	player.crashed.connect(func():
-		game_over.emit(score)
+		var game_over:GameOver = SceneManager.scenes.get('game_over').instantiate()
+		game_over.score = score
+		game_over.time = gameplay_time
+		game_over.distance = player.position.z
+		SceneManager.set_node(game_over)
 	)
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

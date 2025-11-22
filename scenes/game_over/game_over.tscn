@@ -1,0 +1,100 @@
+[gd_scene load_steps=2 format=3 uid="uid://lbw04rqyodlr"]
+
+[ext_resource type="Script" uid="uid://iryuj7gsyiwb" path="res://scenes/game_over/game_over.gd" id="1_3j056"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3j056")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 1.7778
+
+[node name="PanelContainer" type="PanelContainer" parent="AspectRatioContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="AspectRatioContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="AspectRatioContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="Spacer2" type="Control" parent="AspectRatioContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="AspectRatioContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="AspectRatioContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Score"
+
+[node name="Score" type="Label" parent="AspectRatioContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "124.23"
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="AspectRatioContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Time"
+
+[node name="Time" type="Label" parent="AspectRatioContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "12:32"
+horizontal_alignment = 2
+
+[node name="Label5" type="Label" parent="AspectRatioContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Distance"
+
+[node name="Distance" type="Label" parent="AspectRatioContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "213312 meters"
+horizontal_alignment = 2
+
+[node name="Spacer" type="Control" parent="AspectRatioContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TryAgain" type="Button" parent="AspectRatioContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Try Again"
+
+[node name="MainMenu" type="Button" parent="AspectRatioContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Main Menu"
+
+[node name="Quit" type="Button" parent="AspectRatioContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Quit"

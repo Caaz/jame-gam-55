@@ -1,0 +1,89 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtcef7gtyif3"]
+
+[ext_resource type="Shader" uid="uid://cemq4viuqqwhg" path="res://shaders/bar_shader.gdshader" id="1_k4uxq"]
+[ext_resource type="Texture2D" uid="uid://cf3h18wwgvhso" path="res://textures/feather.svg" id="2_ennml"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p0jio"]
+shader = ExtResource("1_k4uxq")
+shader_parameter/percent = 0.5130000243675
+
+[node name="UI" type="Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 1.7778
+
+[node name="MarginContainer" type="MarginContainer" parent="AspectRatioContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="AspectRatioContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="AspectRatioContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Score"
+
+[node name="ScoreLabel" type="Label" parent="AspectRatioContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "0000"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="AspectRatioContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="AspectRatioContainer/MarginContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Time"
+
+[node name="TimeLabel" type="Label" parent="AspectRatioContainer/MarginContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "0000"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="AspectRatioContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Speed"
+
+[node name="CenterContainer" type="CenterContainer" parent="AspectRatioContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SpeedDisplay" type="TextureRect" parent="AspectRatioContainer/MarginContainer/VBoxContainer/CenterContainer"]
+material = SubResource("ShaderMaterial_p0jio")
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("2_ennml")
+
+[node name="SpeedLabel" type="Label" parent="AspectRatioContainer/MarginContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+text = "10"

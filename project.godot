@@ -17,13 +17,14 @@ environment_file_directory="res://AmbientCG/Environments"
 [application]
 
 config/name="game-jam-55"
-run/main_scene="uid://cjgeldnx4mjto"
+run/main_scene="uid://bto7oxp2k6rie"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+SceneManager="*res://singletons/scene_manager.gd"
 
 [display]
 
@@ -32,7 +33,15 @@ window/stretch/aspect="keep_height"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ambientcg/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
+enabled=PackedStringArray("res://addons/ambientcg/plugin.cfg", "res://addons/godot_resource_groups/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
+
+[global_group]
+
+scene_container=""
+
+[godot_resource_groups]
+
+auto_rebuild=true
 
 [gui]
 

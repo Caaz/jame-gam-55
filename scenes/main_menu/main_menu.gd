@@ -1,9 +1,11 @@
 extends Control
 
+#const GAMEPLAY_SCENE:PackedScene = preload("uid://b3lq4srperwqd")
+
 func _on_start_pressed():
 	$CutScenes.play("Loading")
 	await $CutScenes.animation_finished
-	get_tree().change_scene_to_file("res://scenes/testbed/testbed.tscn")
+	SceneManager.set_scene(SceneManager.scenes.get('gameplay'))
 
 
 func _on_options_pressed():
