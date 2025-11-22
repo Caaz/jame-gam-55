@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dldhtelmbtyi1"
+path="res://.godot/imported/Gorge Path Theme v3.ogg-4bae374927840fa4e694c1f55bf855d0.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/Gorge Path Theme v3.ogg"
+dest_files=["res://.godot/imported/Gorge Path Theme v3.ogg-4bae374927840fa4e694c1f55bf855d0.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

@@ -62,6 +62,7 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.normalized() * TOP_SPEED
 		
 	
+	velocity = velocity.move_toward(Vector3.ZERO, delta*5.)
 	RenderingServer.global_shader_parameter_set("player_position", global_position)
 	var collided:bool = move_and_slide()
 	trail.size = pow(speed_percentage,10) * .1

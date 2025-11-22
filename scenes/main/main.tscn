@@ -1,8 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://bto7oxp2k6rie"]
+[gd_scene load_steps=5 format=3 uid="uid://bto7oxp2k6rie"]
 
 [ext_resource type="Script" uid="uid://dlprwn6a58twe" path="res://scenes/main/main.gd" id="1_hyk8p"]
+[ext_resource type="AudioStream" uid="uid://lw0feyr8pe0a" path="res://audio/Gorge Path Theme (Menu).ogg" id="2_k2fmo"]
+[ext_resource type="AudioStream" uid="uid://dldhtelmbtyi1" path="res://audio/Gorge Path Theme v3.ogg" id="3_l3cfh"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_6q06x"]
+clip_count = 2
+clip_0/name = &"main_menu"
+clip_0/stream = ExtResource("2_k2fmo")
+clip_0/auto_advance = 0
+clip_1/name = &"gameplay"
+clip_1/stream = ExtResource("3_l3cfh")
+clip_1/auto_advance = 0
+_transitions = {
+Vector2i(-1, -1): {
+"fade_beats": 0.2,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 0
+}
+}
 
 [node name="Main" type="Node"]
 script = ExtResource("1_hyk8p")
 
 [node name="SceneContainer" type="Node" parent="." groups=["scene_container"]]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." groups=["music_player"]]
+stream = SubResource("AudioStreamInteractive_6q06x")
+autoplay = true

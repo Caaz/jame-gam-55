@@ -25,6 +25,7 @@ config/icon="res://icon.svg"
 
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 SceneManager="*res://singletons/scene_manager.gd"
+MusicManager="*res://singletons/music_manager.gd"
 
 [display]
 
@@ -38,6 +39,7 @@ enabled=PackedStringArray("res://addons/ambientcg/plugin.cfg", "res://addons/god
 [global_group]
 
 scene_container=""
+music_player=""
 
 [godot_resource_groups]
 

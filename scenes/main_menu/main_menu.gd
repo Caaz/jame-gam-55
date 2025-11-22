@@ -1,6 +1,7 @@
 extends Control
 
-#const GAMEPLAY_SCENE:PackedScene = preload("uid://b3lq4srperwqd")
+func _ready():
+	MusicManager.play(&"main_menu")
 
 func _on_start_pressed():
 	$CutScenes.play("Loading")

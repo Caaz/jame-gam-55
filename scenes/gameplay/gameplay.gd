@@ -13,12 +13,13 @@ var score:float:
 
 var ghost_score:float:
 	get:
-		var expected_distance:float = gameplay_time * player.TOP_SPEED / 4.
+		var expected_distance:float = gameplay_time * player.TOP_SPEED * .1
 		return expected_distance / (player.TOP_SPEED / 2.)
 	
 var gameplay_time:float = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	MusicManager.play("gameplay")
 	gameplay_time = 0
 	player.crashed.connect(func():
 		var game_over:GameOver = SceneManager.scenes.get('game_over').instantiate()
